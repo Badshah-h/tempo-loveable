@@ -63,8 +63,6 @@ function App() {
       <ThemeProvider defaultTheme="system" storageKey="ui-theme">
         <AuthProvider>
           <Router>
-            {/* Tempo routes */}
-            {import.meta.env.VITE_TEMPO && <TempoRoutes />}
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<LandingPage />} />
@@ -116,10 +114,10 @@ function App() {
 
               {/* Error pages */}
               <Route path="/unauthorized" element={<UnauthorizedPage />} />
-              {/* Add Tempo route before catchall */}
-              {import.meta.env.VITE_TEMPO && <Route path="/tempobook/*" />}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            {/* Tempo routes */}
+            {import.meta.env.VITE_TEMPO && <TempoRoutes />}
           </Router>
           <Toaster position="top-right" />
           <SessionExpirationModal />
